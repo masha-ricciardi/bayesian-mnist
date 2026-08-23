@@ -1,7 +1,7 @@
 """
 This script is used to load the MNIST dataset and create data loaders for training and testing.
 The data loaders will group the images into batches and shuffle the training data.
-This is setting up the data for a Mini Batch Gradient Descent approach, a middle ground between Batch and Stochastic Gradient Descent.
+This is setting up the data for a Mini Batch Stochastic Gradient Descent approach.
 """
 import torch
 import torch.nn as nn
