@@ -22,12 +22,14 @@ Same baseline CNN will be used across three models. This includes the use of a m
 
 The structure is as follows:
 
+```
 Input (1×28×28)
 → Conv2d(1→16, 5×5) → ReLU → MaxPool(2)
 → Conv2d(16→32, 5×5) → ReLU → MaxPool(2)
 → Flatten (512)
 → Linear(512→128) → ReLU
 → Linear(128→10)
+```
 
 First two layers are convolutional layers that will learn to detect patterns in the input images. They do not make assumptions about position of certain features in the image e.g. a curve corresponding to a 9 can be detected anywhere in the image.
 
