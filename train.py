@@ -31,7 +31,8 @@ test_loader = DataLoader(test_data, batch_size=100, shuffle=False)
 
 if __name__ == "__main__":
     images, labels = next(iter(train_loader)) 
-# This line retrieves the first batch of images and labels from the training data loader. The 'next' function is used to get the next item from the iterator returned by 'iter(train_loader)'.
+# This line retrieves the first batch of images and labels from the training data loader. 
+# The 'next' function is used to get the next item from the iterator returned by 'iter(train_loader)'.
     print("one training batch:", images.shape, labels.shape)
     print("number of training batches:", len(train_loader))
     print("number of test batches:", len(test_loader))

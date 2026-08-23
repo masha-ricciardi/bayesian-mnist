@@ -2,8 +2,8 @@
 Here I'm creating a Convolutional Neural Network (CNN) class that inherits from nn.Module, which is the base class for all neural network modules in PyTorch. 
 This class will define the architecture of the CNN model that will serve as the basis for all our MNIST classification models.
 
-First two layers are convolutional layers that will learn to detect patterns in the input images. They do not make assumptions about position of certain features in the image
-e.g. a curve corresponding to a nine can be detected anywhere in the image.
+First two layers are convolutional layers that will learn to detect patterns in the input images. 
+They do not make assumptions about position of certain features in the image e.g. a curve corresponding to a nine can be detected anywhere in the image.
 The last two layers are fully connected (linear) layers that do not preserve position, which means they can work with the output of the convolutional layers to make predictions about the class of the input image.
 
 Using only linear layers could theoretically work, but it is computationally expensive and would require a lot of training data to learn the same patterns that convolutional layers can learn with fewer parameters and less data.
