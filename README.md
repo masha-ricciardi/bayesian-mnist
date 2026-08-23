@@ -40,6 +40,7 @@ Using only linear layers could theoretically work, but it is far more computatio
 Here are the 3 steps each of the two convolutional layers will perform on the input images:
 
 **1. Convolutional layers:**
+
 They take a small patch of the input image and apply a filter (a small matrix of weights) to it, producing a single output value. 
 
 This process is repeated across the entire image, producing a feature map that highlights the presence of certain patterns in the image. The filters are learned during training, allowing the model to learn which patterns are important for classification.
@@ -53,6 +54,7 @@ E.g. we have a 3x3 patch of the image that looks like this:
 Each value in the patch is multiplied by the corresponding value in the filter, and the results are summed to produce a single output value (in our example it would be 10). This process is repeated across the entire image, producing a feature map that highlights the presence of certain patterns in the image. The filters are learned during training, allowing the model to learn which patterns are important for the classification.
 
 **2. ReLU (Rectified Linear Unit):**
+
 An activation function that introduces non-linearity into the model, allowing it to learn more complex patterns.
 It works by setting all negative numbers to zero and leaving positive numbers unchanged (e.g. if our 10 were -4 it would become 0, in our instance it is unchanged).
 
@@ -61,6 +63,7 @@ This is important because without non-linearity, the model would only be able to
 Intuitively, "this shape looks like the opposite of what I'm looking for" is not any more useful than "it doesn't look like it".
 
 **3. Max Pooling:**
+
 Groups the outputs of the convolutional layers into small non-overlapping patches and keeps the largest value from each patch. This reduces the dimensions and makes the model more robust to small translations and distortions in the input images.
 
 Since the numbers sit in the centre of the image, we can use a 2x2 max pooling layer to reduce the dimensions of the feature maps by half, while still preserving the important features of the input images. This works for MNIST specifically but might not be applicable to future datasets.
