@@ -1,4 +1,4 @@
-<h1>MNIST Classification Neaural Network</h1>
+<h1>MNIST Classification Neural Network</h1>
 
 This project aims to first, build a standard point-estimate convolutional neural network and then compare it against two Bayesian approaches: MC-Dropout and Bayes-by-Backpropagation.
 
