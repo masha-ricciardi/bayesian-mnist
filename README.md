@@ -43,11 +43,11 @@ They take a small patch of the input image and apply a filter (a small matrix of
 This process is repeated across the entire image, producing a feature map that highlights the presence of certain patterns in the image. The filters are learned during training, allowing the model to learn which patterns are important for classification.
 
 E.g. we have a 3x3 patch of the image that looks like this:
-
+```
 4 1 0  which it matches to this filter 1 1 0
 2 3 1                                  0 1 0
 0 1 2                                  0 0 1
-
+```
 Each value in the patch is multiplied by the corresponding value in the filter, and the results are summed to produce a single output value (in our example it would be 10). This process is repeated across the entire image, producing a feature map that highlights the presence of certain patterns in the image. The filters are learned during training, allowing the model to learn which patterns are important for the classification.
 
 **2. ReLU (Rectified Linear Unit):**
@@ -70,7 +70,7 @@ Requires Python 3.14 (or similar) and a virtual environment.
 
 ```bash
 python -m venv venv
-.\venv\Scripts\Activate.ps1        # Windows PowerShell
+.\venv\Scripts\Activate.ps1        
 pip install -r requirements.txt
 ```
 **Usage**
@@ -82,10 +82,10 @@ python train.py    # trains the baseline CNN for 5 epochs
 ```
 <h2> Results (so far) </h2>
 
-With a run time that averages around 1 minute, these are the results for the basic CNN over 5 epochs (runs of the dataset):
+With a run time that averages at around 1 minute, these are the results for the basic CNN over 5 epochs (runs of the dataset):
 
-Epoch: 0  Train accuracy: 93.14%  Test accuracy: 98.10%
-Epoch: 1  Train accuracy: 98.21%  Test accuracy: 98.37%
-Epoch: 2  Train accuracy: 98.77%  Test accuracy: 98.52%
-Epoch: 3  Train accuracy: 98.99%  Test accuracy: 99.07%
-Epoch: 4  Train accuracy: 99.16%  Test accuracy: 99.06%
+- Epoch: 0  Train accuracy: 93.14%  Test accuracy: 98.10%
+- Epoch: 1  Train accuracy: 98.21%  Test accuracy: 98.37%
+- Epoch: 2  Train accuracy: 98.77%  Test accuracy: 98.52%
+- Epoch: 3  Train accuracy: 98.99%  Test accuracy: 99.07%
+- Epoch: 4  Train accuracy: 99.16%  Test accuracy: 99.06%
