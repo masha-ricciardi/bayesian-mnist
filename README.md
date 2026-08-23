@@ -1,6 +1,6 @@
 <h1>MNIST Classification Neural Network</h1>
 
-This project aims to first, build a standard point-estimate convolutional neural network and then compare it against two Bayesian approaches: MC-Dropout and Bayes-by-Backpropagation.
+This project aims to first build a standard point-estimate convolutional neural network and then compare it against two Bayesian approaches: MC-Dropout and Bayes-by-Backpropagation.
 
 The MNIST digit classification dataset is used for this, it consists of 60000 training images and 10000 testing images of hand drawn digits 0-9, all labelled with their true value.
 
