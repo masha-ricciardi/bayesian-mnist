@@ -68,6 +68,25 @@ Groups the outputs of the convolutional layers into small non-overlapping patche
 
 Since the numbers sit in the centre of the image, we can use a 2x2 max pooling layer to reduce the dimensions of the feature maps by half, while still preserving the important features of the input images. This works for MNIST specifically but might not be applicable to future datasets.
 
+<h2> MC-Dropout </h2>
+
+Normally, dropout is a technique where we randomly zero out a neuron, each layer's original weight matrix is multiplied by a random on/off pattern, each neuron is either "kept" or "dropped" with some probability set per layer. This technique is Bayesian because we aren't looking for one correct set of weights but a distribution of plausible sets of weights and their average. In effect, we are sampling from their distribution. 
+
+Usually, drop out is an effective way to prevent overfitting, but here it becomes a variational posterior (the approximate belief distribution) not the prior. Because of this, we still need a separate regularisation method on top of it (....). When we assume a normal prior on the weights, training with dropout and penalty is equivalent to optimising the Bayesian ELBO (Evidence Lower Bound) objective.
+
+ELBO is a computable quantity that we can optimise to pull our approximate distribution towards the true posterior, we maximise the lower bound instead of computing the exact best distribution of weights.
+
+Predictions are made at testing time by running the same input through multiple times with dropout left on, then averaging the outputs. The spread across all the runs is our uncertainty estimate.
+
+**Pros:**
+- Easy to implement
+- Often trains faster than other Bayesian methods
+
+**Cons:**
+- May not capture the full true uncertainty
+- Less flexible for active learning
+
+
 <h2> Setup and Usage </h2>
 
 **Set up**

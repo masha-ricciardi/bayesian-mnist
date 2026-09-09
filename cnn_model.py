@@ -1,7 +1,6 @@
 """
 Here I'm creating a Convolutional Neural Network (CNN) class that inherits from nn.Module, which is the base class for all neural network modules in PyTorch. 
 This class will define the architecture of the CNN model that will serve as the basis for all our MNIST classification models.
-
 """
 import torch.nn as nn
 import torch.nn.functional as F

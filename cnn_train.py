@@ -8,7 +8,7 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
 from data import train_data, test_data
-from model import CNN
+from cnn_model import CNN
 import time
 
 start_time = time.time()  # Records the start time of the training process.
