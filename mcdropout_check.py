@@ -1,5 +1,5 @@
 import torch
-from data import train_data, test_data
+from data import test_data
 from mcdropout_model import MCDropoutCNN
 from mcdropout_predict import mc_dropout_predict
 

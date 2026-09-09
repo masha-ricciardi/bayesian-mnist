@@ -72,7 +72,7 @@ Since the numbers sit in the centre of the image, we can use a 2x2 max pooling l
 
 Normally, dropout is a technique where we randomly zero out a neuron, each layer's original weight matrix is multiplied by a random on/off pattern, each neuron is either "kept" or "dropped" with some probability set per layer. This technique is Bayesian because we aren't looking for one correct set of weights but a distribution of plausible sets of weights and their average. In effect, we are sampling from their distribution. 
 
-Usually, drop out is an effective way to prevent overfitting, but here it becomes a variational posterior (the approximate belief distribution) not the prior. Because of this, we still need a separate regularisation method on top of it like weight decay (L2 penalty). When we assume a normal prior on the weights, training with dropout and penalty is equivalent to optimising the Bayesian ELBO (Evidence Lower Bound) objective.
+Usually, drop out is an effective way to prevent overfitting, but here it becomes a variational posterior (the approximate belief distribution) not the prior. Because of this, we still need a separate regularisation method on top of it (e.g. weight decay). When we assume a normal prior on the weights, training with dropout and penalty is equivalent to optimising the Bayesian ELBO (Evidence Lower Bound) objective.
 
 ELBO is a computable quantity that we can optimise to pull our approximate distribution towards the true posterior, we maximise the lower bound instead of computing the exact best distribution of weights.
 
@@ -106,6 +106,8 @@ python train.py    # trains the baseline CNN for 5 epochs
 ```
 <h2> Results (so far) </h2>
 
+**Base CNN**
+
 With a run time that averages at around 1 minute, these are the results for the basic CNN over 5 epochs (runs of the dataset):
 
 - Epoch: 0  Train accuracy: 93.14%  Test accuracy: 98.10%
@@ -113,3 +115,21 @@ With a run time that averages at around 1 minute, these are the results for the 
 - Epoch: 2  Train accuracy: 98.77%  Test accuracy: 98.52%
 - Epoch: 3  Train accuracy: 98.99%  Test accuracy: 99.07%
 - Epoch: 4  Train accuracy: 99.16%  Test accuracy: 99.06%
+
+**MC-Dropout**
+
+Same architecture as the baseline, with dropout (p=0.25) added after every hidden layer, plus L2 regularization (weight_decay=1e-4) — together mathematically equivalent to optimizing the Bayesian ELBO under a Gaussian prior on the weights.
+
+5 epochs, batch size 100, Adam (lr=1e-3, weight_decay=1e-4), fixed seed:
+
+```
+Epoch: 0  Train accuracy: 90.59%  Test accuracy: 97.89%
+Epoch: 1  Train accuracy: 97.01%  Test accuracy: 98.66%
+Epoch: 2  Train accuracy: 97.71%  Test accuracy: 98.80%
+Epoch: 3  Train accuracy: 98.03%  Test accuracy: 99.00%
+Epoch: 4  Train accuracy: 98.31%  Test accuracy: 99.07%
+```
+
+Note: train accuracy is significantly lower test accuracy here which is expected for MC-Dropout since dropout is active (weakening the network) during the train-accuracy measurement but disabled during the test-accuracy measurement.
+
+Sanity check (5 held-out test images, single-pass vs. 50-pass MC-Dropout average): both methods agreed with each other and with the true label on all 5 images, with high confidence (~0.998-1.000) and low uncertainty (~0.001-0.006) — expected, since these are clear, in-distribution digits. 
