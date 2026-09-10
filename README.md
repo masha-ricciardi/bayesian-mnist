@@ -12,7 +12,7 @@ It follows the concepts and architecture guidance from
 
 - [x] Data Loading
 - [x] Basic point-estimate CNN 
-- [ ] MC-Dropout Version
+- [x] MC-Dropout Version
 - [ ] Bayes-by-Backpropagation version
 - [ ] Comparison
 
